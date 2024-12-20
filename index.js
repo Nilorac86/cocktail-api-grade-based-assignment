@@ -1,5 +1,6 @@
 import { mapRawCocktailData } from "./utilities.js";
 
+const cocktailDetailsContainer = document.querySelector(".detailsContainer");
 const detailsPage = document.querySelector("#details-page");
 const navbar = document.querySelector(".navbar");
 const newRandomDrinkBtn = document.querySelector("#btn-new-cocktail");
@@ -166,7 +167,8 @@ async function searchByCocktailName() { // Hämtar API till drink på sök sidan
 // #################### DETALJSIDAN, VISA DRINKAR MED FLER DETALJER ##############
 
 function createDetailsCocktail(cocktail) { // Skapar html strukturen på detaljsidan
-  const cocktailDetailsContainer = document.querySelector(".detailsContainer");
+
+
   cocktailDetailsContainer.innerHTML = /*html*/ `
     <article class="aboutDrink">
     <div class="aboutDrinkSection">

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The coctail DB</title>
+    <link rel="stylesheet" href="index.css" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  </head>
+  <body>
+
+    
+    <nav class="navbar">
+      <span class="link" id="start-link">Start</span>
+      <span class="link" id="search-link">Search</span>
+    </nav>
+
+    <header id="page-banner">
+    <img src="/logo.png">
+    </header>
+  
+
+    <main>
+      <section class="open" id="start-page">
+        <div class="startPageContainer">
+        <h1>Välkommen</h1>
+        <p>Få en random coctail</p>
+        <div class="randomCocktailContainer">
+
+        </div>
+        <div class="btn-container">
+        <button id="btn-new-cocktail">New cocktail</button>
+        <button id="btn-see-more">See more</button>
+        </div>
+      </div>
+      </section>
+
+  
+      <section  id="details-page">
+        <div class="detailsPageContainer">
+        <h1>Specifik cocktail</h1>
+        <div class="detailsContainer">
+
+        </div>
+        </div>
+      </section>
+  
+
+      <section id="search-page">
+        <div class="searchPageContainer">
+        <h1>Sök cocktail</h1>
+        <p>Här kan du söka efter en coctail</p>
+        <form>
+          <input id ="search-input"type="text" placeholder="Vilken coctail söker du?">
+          <button>Sök</button>
+          </form>
+        <div id="search-container">
+          <ul class="searchList">
+
+          </ul>
+        
+        </div>
+      </div>
+      </section>
+      
+      
+    </main>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: "montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+:root 
+{
+  --bg-color: rgb(125, 108, 125);
+  --bg-color-light: rgb(173, 161, 173);
+  --bg-color-dark-hover: rgb(82, 66, 82);
+  --main-color: rgb(246, 246, 239);
+
+}
+
+body{
+  background-color: var(--main-color);
+}
+
+#start-page,
+#details-page,
+#search-page{
+  display: none;
+
+}
+
+#start-page.open,
+#details-page.open,
+#search-page.open{
+  display: block;
+  
+}
+.navbar {
+  background-color: var(--main-color);
+  display: flex;     
+  gap:1rem;          
+  justify-content: start;     
+  padding: 0.3rem 2rem; 
+  width:100vw;         
+}
+#page-banner{
+  align-items:center;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: end;
+ padding-right: 5rem;
+ padding-bottom: 1rem;
+}
+
+.main{
+  width: 100vw;
+  height: 100vh;
+}
+
+.link {
+    cursor: pointer;
+}
+
+button {
+  cursor:pointer;
+}
+
+h1{
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  
+}
+
+.startPageContainer{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  
+}
+
+.randomCocktail{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap:2rem;
+  justify-content: center;
+
+}
+.randomCocktailImg{
+  width:50%;
+
+}
+
+.btn-container{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  
+}
+button{
+
+    background-color: var(--main-color);
+    border:  1px solid black;
+    border-radius: 0.3rem;
+    cursor:pointer;
+    flex-direction: row;
+    font-size: medium;
+    font-weight: 600;
+    height: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    outline: none;
+    width: 6rem;
+  
+}
+
+.searchPageContainer{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  
+}
+
+input {
+  background-color: var(--main-color);
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  font-size: large;
+  height: 3rem;
+  margin-top:1rem;
+  outline: none;
+  padding-inline: 1rem;
+  width: 80%;
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+
+.detailsPageContainer{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  
+}
+
+.detailsCocktailImg{
+  width: 50%;
+}
+
+.aboutDrink{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.aboutDrinkSection{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 2rem;
+
+}
+
+.ingredientContainer{
+  align-items: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: start;
+  gap:4rem;
+
+}
+
+.instructions{
+  align-items: start;
+  display:flex;
+  height: auto;
+  width:300px;
+}

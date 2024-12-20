@@ -27,13 +27,15 @@ function handleOnLinkClick(id) { // Hanterar klick i navbaren
     startPage.classList.add("open");
     detailsPage.classList.remove("open");
     searchPage.classList.remove("open");
-    favoritePage.classList.remove("open");
+
   }
 
   if (id === "search-link") {
     startPage.classList.remove("open");
     detailsPage.classList.remove("open");
     searchPage.classList.add("open");
+
+    clearSearchResult(); // Aktiveras när sök länken klickas på
   }
 
   if (id === "favorite-link") {
@@ -46,8 +48,8 @@ function handleOnLinkClick(id) { // Hanterar klick i navbaren
 
 
 
-function handleCocktailClick(event) { // Hanterar klick i listan på söksidan
-  const cocktailElement = event.target.closest(".cocktail-list"); 
+function handleCocktailListClick(event) { // Hanterar klick i listan på söksidan
+  const cocktailElement = event.target.closest(".cocktailList"); 
 
   if (cocktailElement) {
     const drinkId = cocktailElement.id; 
@@ -59,6 +61,9 @@ function handleCocktailClick(event) { // Hanterar klick i listan på söksidan
   }
 };
 
+function clearSearchResult(){ // Tömmer sökresultatet.
+    searchList.innerHTML = "";
+};
 
 function handleSeeMoreBtn() {
         if (currentCocktailId) {
@@ -115,8 +120,8 @@ function cocktailSearchList(drinks) { // Skapar html strukturen
   if(drinks.length > 0){ // If sats som kontrollerrar om drinklistan är större än noll.
     drinks.forEach((drink) => { // Listar varje drink från listan enskilt.
       const cocktailElement = document.createElement("li");
-      cocktailElement.classList.add("cocktail-list"); // Lägger till en klass på listan mest för stylings syfte
-      cocktailElement.id = drink.id;  // Ger varje list objekt ett id för att senare 
+      cocktailElement.classList.add("cocktailList"); 
+      cocktailElement.id = drink.id;  
       cocktailElement.innerHTML = /*html*/ `
         <h3>${drink.name}</h3>
       `;
@@ -149,6 +154,7 @@ async function searchByCocktailName() { // Hämtar API till drink på sök sidan
     }
 
     document.querySelector("#search-input").value = ""; // Tömmer inputfält efter varje sökning.
+    
 
   } catch (error) {
     console.error("Error", error); // Fångar error
@@ -164,7 +170,7 @@ function createDetailsCocktail(cocktail) { // Skapar html strukturen på detaljs
   cocktailDetailsContainer.innerHTML = /*html*/ `
     <article class="aboutDrink">
     <div class="aboutDrinkSection">
-      <h3 class="drinkName">${cocktail.name}</h3>
+      <h1 class="drinkName">${cocktail.name}</h1>
         <img class="detailsCocktailImg" src="${cocktail.thumbnail}">
       <p class="category">${cocktail.category}</p>
       <p class ="tags">${cocktail.tags.join(", ")}</p>
@@ -217,8 +223,11 @@ searchForm.addEventListener('submit', (event) => { // Submitar sökformuläret
     searchByCocktailName();
   });
 
-searchList.addEventListener("click", handleCocktailClick); // Lyssnar efter klick i söklistan 
+searchList.addEventListener("click", handleCocktailListClick); // Lyssnar efter klick i söklistan 
 });
+
+
+
 
 
 

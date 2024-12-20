@@ -94,7 +94,7 @@ h1{
 
 }
 
-.btn-container{
+.btnContainer{
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -192,4 +192,15 @@ form{
   display:flex;
   height: auto;
   width:300px;
+}
+
+.searchList{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    margin-bottom: 4rem;
+}
+
+.searchList :hover{
+    cursor: pointer;
 }

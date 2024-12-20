@@ -1,14 +1,15 @@
 import { mapRawCocktailData } from "./utilities.js";
 
-const navbar = document.querySelector(".navbar");
-const startPage = document.querySelector("#start-page");
 const detailsPage = document.querySelector("#details-page");
-const searchPage = document.querySelector("#search-page");
-const seeMoreButton = document.querySelector("#btn-see-more");
+const navbar = document.querySelector(".navbar");
 const newRandomDrinkBtn = document.querySelector("#btn-new-cocktail");
+const randomCocktailContainer = document.querySelector(".randomCocktailContainer");
 const searchForm = document.querySelector("form");
 const searchList = document.querySelector(".searchList");
-const randomCocktailContainer = document.querySelector(".randomCocktailContainer");
+const searchPage = document.querySelector("#search-page");
+const seeMoreButton = document.querySelector("#btn-see-more");
+const searchInput = document.querySelector("#search-input");
+const startPage = document.querySelector("#start-page");
 
 let currentCocktailId = null;// Fick lägga till en global variabel för att nuvarande drink ska sparas på den annars blev det tokigt.
 
@@ -134,10 +135,10 @@ function cocktailSearchList(cocktails) { // Skapar html strukturen
 
 
 
-async function searchByCocktailName() { // Hämtar API till drink på sök sidan.
-    
-  const cocktailName = document.querySelector("#search-input").value.trim(); // Lagrar användarens input från sök dokumentet och tar bort mellanslag som kan ändra sök resultat.
-  
+async function searchByCocktailName() { // Hämtar API till drink på sök sidan. 
+   
+  const cocktailName = searchInput.value.trim(); // Lagrar användarens input från sök dokumentet och tar bort överflödiga mellanslag.
+
   if (!cocktailName) return;
   const URLSearch = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`;
 
@@ -153,8 +154,7 @@ async function searchByCocktailName() { // Hämtar API till drink på sök sidan
       searchList.innerHTML = "<p>No cocktails found</p>"; // Uppdaterar listan om det inte finns några drinkar.
     }
 
-    document.querySelector("#search-input").value = ""; // Tömmer inputfält efter varje sökning.
-    
+    searchInput.value = ""; // Tömmer inputfält efter varje sökning.
 
   } catch (error) {
     console.error("Error", error); // Fångar error
@@ -218,7 +218,7 @@ newRandomDrinkBtn.addEventListener("click", getRandomCocktail); // Lyssnar efter
 
 seeMoreButton.addEventListener("click", handleSeeMoreBtn);
 
-searchForm.addEventListener('submit', (event) => { // Submitar sökformuläret 
+searchForm.addEventListener('submit', (event) => { // Submitar sökformuläret och aktiverar 
     event.preventDefault();
     searchByCocktailName();
   });

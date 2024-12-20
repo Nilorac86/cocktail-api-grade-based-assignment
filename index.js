@@ -174,18 +174,20 @@ function createDetailsCocktail(cocktail) { // Skapar html strukturen på detaljs
     <div class="aboutDrinkSection">
       <h1 class="drinkName">${cocktail.name}</h1>
         <img class="detailsCocktailImg" src="${cocktail.thumbnail}">
-      <p class="category">${cocktail.category}</p>
+      <p class="category">Category: ${cocktail.category}</p>
       <p class ="tags">${cocktail.tags.join(", ")}</p>
       </div>
      <div class="ingredientContainer">
       <div class="ingredient">
+        <p>Ingredients and measurements:</p>
         <ul>${cocktail.ingredients.map(ingredient =>
-          `<li>${ingredient.ingredient}: ${ingredient.measure}</li>`
+          `<li id="ingredientList">${ingredient.ingredient}: ${ingredient.measure}</li>`
         ).join(" ")}
         </ul>
       </div>
-      <article class="instructions">${cocktail.instructions}</article>
-      <p>${cocktail.glass}</p>
+      <article class="instructions"> <p>Instructions:</p>${cocktail.instructions}
+      <p>Glass: ${cocktail.glass}</p>
+      </article>
       </div>
     </article>`;
 };

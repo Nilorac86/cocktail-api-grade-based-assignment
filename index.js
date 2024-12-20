@@ -4,7 +4,6 @@ const navbar = document.querySelector(".navbar");
 const startPage = document.querySelector("#start-page");
 const detailsPage = document.querySelector("#details-page");
 const searchPage = document.querySelector("#search-page");
-const favoritePage = document.querySelector("#favorite-page");
 const seeMoreButton = document.querySelector("#btn-see-more");
 const newRandomDrinkBtn = document.querySelector("#btn-new-cocktail");
 const searchForm = document.querySelector("form");
@@ -51,7 +50,7 @@ function handleOnLinkClick(id) { // Hanterar klick i navbaren
 function handleCocktailListClick(event) { // Hanterar klick i listan på söksidan
   const cocktailElement = event.target.closest(".cocktailList"); 
 
-  if (cocktailElement) {
+  if (cocktailElement) { //Om listelementet klickas på öppnas detaljsida med aktuellt drinkid.
     const drinkId = cocktailElement.id; 
     getCocktailDetails(drinkId); 
     startPage.classList.remove("open");
@@ -65,8 +64,9 @@ function clearSearchResult(){ // Tömmer sökresultatet.
     searchList.innerHTML = "";
 };
 
-function handleSeeMoreBtn() {
-        if (currentCocktailId) {
+
+function handleSeeMoreBtn() { // Hanterar klick på "see more" knappen
+        if (currentCocktailId) { // Om det är sparade id på globalvariabel öppnas detaljsidan med aktuell variabel
           getCocktailDetails(currentCocktailId); 
   
           startPage.classList.remove("open");
@@ -85,7 +85,7 @@ function createRandomCocktail(cocktail) {  // Skapar html strukturen av en rando
         <img class="randomCocktailImg" src="${cocktail.thumbnail}" alt="${cocktail.name}"> 
     </article>`;
 
-     currentCocktailId = cocktail.id; // Global variabel uppdateras
+     currentCocktailId = cocktail.id; // Global variabel uppdateras till aktuell random drink
     
 };
 
@@ -114,16 +114,16 @@ async function getRandomCocktail() { // Hämtar API till random drink på först
 
 // #################### SÖKSIDAN, LISTA PÅ DRINKAR ######################
 
-function cocktailSearchList(drinks) { // Skapar html strukturen
+function cocktailSearchList(cocktails) { // Skapar html strukturen
   searchList.innerHTML = ""; // Rensar användarens tidigare söklista
 
-  if(drinks.length > 0){ // If sats som kontrollerrar om drinklistan är större än noll.
-    drinks.forEach((drink) => { // Listar varje drink från listan enskilt.
+  if(cocktails.length > 0){ // If sats som kontrollerrar om drinklistan är större än noll.
+    cocktails.forEach((cocktail) => { // Listar varje drink från listan enskilt.
       const cocktailElement = document.createElement("li");
       cocktailElement.classList.add("cocktailList"); 
-      cocktailElement.id = drink.id;  
+      cocktailElement.id = cocktail.id; 
       cocktailElement.innerHTML = /*html*/ `
-        <h3>${drink.name}</h3>
+        <h3>${cocktail.name}</h3>
       `;
 
       searchList.appendChild(cocktailElement); // Lägger till html doc i söklistan
